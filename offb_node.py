@@ -101,7 +101,7 @@ def target_cb(msg):
 
     array[3] = msg.data[0]
     array[4] = msg.data[1]
-    array[5] = 0.2
+    array[5] = msg.data[2]
     target_angle = msg.data[3]
     array[6] = msg.data[4]
     array[7] = msg.data[5]
@@ -116,6 +116,7 @@ if __name__ == "__main__":
     #array 3~4 : ex.x ex.y
     #array 5   : desired_depth
     #array 6   : arm_state
+	#array 7   : target_arm 
     array = [0, 0, 0, 0, 0, 0, 0, 0]
     origin_state = [0, 0, 0]
     fix = 100
@@ -130,12 +131,11 @@ if __name__ == "__main__":
 
     while (not rospy.is_shutdown()):
 
-		#if delay > 0:
-		#    if delay != 1:
-		#        array[3] = 0
-		#        array[4] = 0
-		#        delay -= 1
         array[2] += target_angle
+        if array[2] > 180:
+            array[2] -= 360
+        if array[2] < -180:
+            array[2] += 360
         data_to_send.data = array
         pub.publish(data_to_send)
         #rospy.loginfo("Publish")

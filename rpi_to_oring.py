@@ -7,7 +7,7 @@ from std_msgs.msg import Float32MultiArray
 def stm32_cb(msg):
     global array
     array[1] = msg.data[2]
-	array[2] = msg.data[3]
+    array[2] = msg.data[3]
 
 def state_cb(msg):
     global array
