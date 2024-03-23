@@ -74,11 +74,11 @@ def state_cb_imu(msg):
     global fix
     if fix > 0:
         fix -= 1
-        array = [0, 0, 0, 0, 0, 0, 0]
+        array = [0, 0, 0, 0, 0, 0, 0, 0]
     elif fix == 0:
         fix = -1
         origin_state = quaternion_to_euler(quaternion)
-        array = [0, 0, 0, 0, 0, 0, 0]
+        array = [0, 0, 0, 0, 0, 0, 0, 0]
     else :
         error_angle = [0, 0, 0]
         error_angle = quaternion_to_euler(quaternion) - (origin_state[0], origin_state[1], origin_state[2])
@@ -104,7 +104,7 @@ def target_cb(msg):
     array[5] = 0.2
     target_angle = msg.data[3]
     array[6] = msg.data[4]
-
+    array[7] = msg.data[5]
 
 if __name__ == "__main__":
     rospy.init_node("offb_node_py")
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     #array 3~4 : ex.x ex.y
     #array 5   : desired_depth
     #array 6   : arm_state
-    array = [0, 0, 0, 0, 0, 0, 0]
+    array = [0, 0, 0, 0, 0, 0, 0, 0]
     origin_state = [0, 0, 0]
     fix = 100
     delay = 0
