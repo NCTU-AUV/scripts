@@ -4,7 +4,11 @@ import rospy
 from std_msgs.msg import Float32MultiArray
 
 def callback_function(data):
-    rospy.loginfo("I heard: %f", data.data[2])
+    if not hasattr(callback_function, "start_angle"):
+        callback_function.start_angle = data.data[2]
+        callback_function.start_time = rospy.get_rostime()
+    else:
+        rospy.loginfo("Drift rate: %f degree/min", (data.data[2] - callback_function.start_angle) / (rospy.get_rostime() - callback_function.start_time).to_sec())
 
 def listener():
     rospy.init_node('yaw_drift_measurer', anonymous=True)
