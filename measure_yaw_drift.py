@@ -4,7 +4,7 @@ import rospy
 from std_msgs.msg import Float64MultiArray
 
 def callback(data):
-    rospy.loginfo("I heard: %f", data[2])
+    rospy.loginfo("I heard: %f", data.data[2])
 
 def listener():
     rospy.init_node('listener', anonymous=True)
