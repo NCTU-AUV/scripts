@@ -4,10 +4,10 @@ import rospy
 from std_msgs.msg import Float64MultiArray
 
 def callback(data):
-    rospy.loginfo("I heard: %f", data.data[2])
+    rospy.loginfo("I heard:")
 
 def listener():
-    rospy.init_node('listener', anonymous=True)
+    rospy.init_node('yaw_drift_measurer', anonymous=True)
     rospy.Subscriber('rpi_to_stm32', Float64MultiArray, callback)
     rospy.spin()
 
