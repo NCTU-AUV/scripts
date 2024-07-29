@@ -8,8 +8,8 @@ def callback_function(data):
 
 def listener():
     rospy.init_node('yaw_drift_measurer', anonymous=True)
-    rospy.Subscriber('rpi_to_stm32', Float64MultiArray, callback=callback_function)
-    rospy.spin()
+	sub = rospy.Subscriber('rpi_to_stm32', Float64MultiArray, callback=callback_function)
+	sub.spin()
 
 if __name__ == '__main__':
     listener()
