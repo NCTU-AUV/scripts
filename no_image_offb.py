@@ -173,7 +173,7 @@ if __name__ == "__main__":
 	#array 6   : arm_state
 	#array 7   : target_arm
 	
-	array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	array = [0, 0, 0, 0, 0, 0, 0, 0]
 
 	origin_state = [0, 0, 0]
 	origin_state__handsfree = [0, 0, 0]
